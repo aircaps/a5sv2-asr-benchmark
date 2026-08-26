@@ -136,7 +136,7 @@ def api_inputs(paths: list[Path], label: str) -> dict[str, Path]:
 
 def corpus_name(row: dict) -> str:
     name = row["dataset_id"]
-    return "Mega-ASR" if name == "AirCaps/mega-asr-noise-a5sv2" else name
+    return "Mega-ASR" if name == "zhifeixie/Voices-in-the-Wild-2M" else name
 
 
 def score(system_id: str, rows: list[dict]) -> list[dict]:
@@ -255,6 +255,9 @@ def main() -> None:
         },
         "uncertainty": {"reported": False},
         "mega_asr_disclosure": {
+            "source_dataset": "zhifeixie/Voices-in-the-Wild-2M",
+            "source_revision": "a8a35d3319737190d6fd3d39157b258eaab35980",
+            "selection_seed": 20260823,
             "selection": "Sampled from Mega-ASR-Train because the standard test set was not acoustically challenging enough to discriminate robust ASR systems",
             "a5sv2_exact_items_used_for_training_or_model_selection": False,
             "third_party_exact_item_or_distribution_overlap": "unknown",

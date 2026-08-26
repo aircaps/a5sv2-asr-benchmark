@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.request import urlopen
 from xml.etree import ElementTree as ET
 
-from datasets import Audio, load_dataset
+from datasets import Audio, interleave_datasets, load_dataset
 from huggingface_hub import hf_hub_download
 import numpy as np
 from pyarrow import parquet
@@ -61,6 +61,13 @@ def apply_gain(pcm: bytes, gain_db: float) -> bytes:
     return samples.astype("<i2").tobytes()
 
 
+def is_english(row: dict) -> bool:
+    text = " ".join(row.get(key) or "" for key in ("question", "text", "answer"))
+    return bool(text.strip()) and not re.search(
+        r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", text
+    )
+
+
 def save_meeting(
     root: Path, dataset: str, revision: str, meeting: str, wav: Path, reference: str, **metadata
 ) -> dict:
@@ -92,32 +99,53 @@ def save_meeting(
 def prepare_mega(root: Path) -> list[dict]:
     rows, pcm_dir = [], root / "pcm"
     pcm_dir.mkdir(parents=True, exist_ok=True)
-    dataset = load_dataset(MEGA["id"], revision=MEGA["revision"])
     for condition in MEGA["conditions"]:
-        for row in dataset[condition].cast_column("audio", Audio(decode=False)):
+        shard_count, shard_ids = MEGA["shards"][condition]
+        streams = [
+            load_dataset(
+                "parquet",
+                data_files={
+                    "train": (
+                        f"https://huggingface.co/datasets/{MEGA['id']}/resolve/"
+                        f"{MEGA['revision']}/data/{condition}-{shard:05d}-of-"
+                        f"{shard_count:05d}.parquet"
+                    )
+                },
+                split="train",
+                streaming=True,
+            ).cast_column("audio", Audio(decode=False))
+            for shard in shard_ids
+        ]
+        stream = interleave_datasets(
+            streams, seed=MEGA["seed"], stopping_strategy="all_exhausted"
+        )
+        stream = stream.filter(is_english).shuffle(
+            seed=MEGA["seed"], buffer_size=MEGA["shuffle_buffer"]
+        )
+        for index, row in enumerate(stream.take(MEGA["examples_per_condition"])):
             payload = row["audio"]
             wav = payload["bytes"] or Path(payload["path"]).read_bytes()
-            if hashlib.sha256(wav).hexdigest() != row["sha256"]:
-                raise RuntimeError(f"Source hash mismatch: {row['id']}")
+            source_hash = hashlib.sha256(wav).hexdigest()
             with wave.open(io.BytesIO(wav)) as audio:
                 rate, frames = audio.getframerate(), audio.getnframes()
                 pcm = audio.readframes(frames)
-            path = pcm_dir / f"{row['id']}.pcm"
+            identifier = f"{condition}_{index:06d}_{row['name']}"
+            path = pcm_dir / f"{identifier}.pcm"
             path.write_bytes(pcm)
             rows.append(
                 {
                     "dataset_id": MEGA["id"],
                     "dataset_revision": MEGA["revision"],
-                    "id": row["id"],
+                    "id": identifier,
                     "condition": condition,
-                    "row_index": int(row["row_index"]),
-                    "reference_raw": row["text"],
+                    "row_index": index,
+                    "reference_raw": row.get("text") or row.get("answer") or "",
                     "sample_rate": rate,
                     "num_samples": frames,
                     "duration_seconds": frames / rate,
                     "pcm_path": str(path.relative_to(root)),
                     "pcm_sha256": hashlib.sha256(pcm).hexdigest(),
-                    "source_sha256": row["sha256"],
+                    "source_sha256": source_hash,
                     "streaming_scope": "utterance",
                 }
             )

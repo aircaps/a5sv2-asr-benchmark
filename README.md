@@ -8,7 +8,7 @@ trial-1 corpus WERs; pooled WER is also reported. No multi-trial averaging is us
 
 | Corpus | Fixed selection | Audio | Reference words |
 |---|---|---|---:|
-| [Mega-ASR / Voices-in-the-Wild-2M](https://xzf-thu.github.io/Mega-ASR/) | [1,250 utterances](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset/blob/main/results/four-corpus-v1/references/mega-asr.jsonl.gz) | stored mono utterances | 32,928 |
+| [Mega-ASR / Voices-in-the-Wild-2M](https://huggingface.co/datasets/zhifeixie/Voices-in-the-Wild-2M) | 1,250 utterances; 250 per condition | stored mono utterances | 32,928 |
 | [AMI](https://groups.inf.ed.ac.uk/ami/corpus/) | [7 scenario-only unseen-evaluation meetings](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset/blob/main/results/four-corpus-v1/references/meetings.jsonl.gz) | `Array1-01`, 0 dB | 32,928 |
 | [DiPCo](https://arxiv.org/abs/1909.13447) | [5 eval meetings + 1 dev meeting](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset/blob/main/results/four-corpus-v1/references/meetings.jsonl.gz) | `U01.CH1`, +5.1 dB | 33,681 |
 | [NOTSOFAR](https://www.isca-archive.org/interspeech_2024/vinnikov24_interspeech.html) | [22 eval-small meetings](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset/blob/main/results/four-corpus-v1/references/meetings.jsonl.gz) | `sc_meetup_0/ch0.wav`, 0 dB | 33,496 |

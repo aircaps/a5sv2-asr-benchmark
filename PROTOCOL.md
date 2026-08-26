@@ -4,12 +4,15 @@
 
 Selections were frozen from references and metadata only; no model output was used.
 
-- **Mega-ASR:** `AirCaps/mega-asr-noise-a5sv2` revision
-  `5b07e1bc50a199c96b58c64197b5ccabb79a910c`, containing 250 utterances from each of five
-  acoustic conditions. It was sampled from the training split of
+- **Mega-ASR:** 1,250 utterances sampled from revision
+  `a8a35d3319737190d6fd3d39157b258eaab35980` of the training splits of
   [Voices-in-the-Wild-2M](https://huggingface.co/datasets/zhifeixie/Voices-in-the-Wild-2M),
   introduced by [Mega-ASR](https://xzf-thu.github.io/Mega-ASR/)
-  ([paper](https://arxiv.org/abs/2605.19833)). It is not speaker-disjoint held-out data and must
+  ([paper](https://arxiv.org/abs/2605.19833)). The fixed selection contains 250 English
+  utterances from each of `far_field`, `far_field_noise`, `noise`, `obstructed_noise`, and
+  `recording_noise`. Selection seed `20260823`, shuffle buffer `512`, source-shard IDs, source-row
+  identities, and audio hashes are retained in the code and release artifacts. It is not
+  speaker-disjoint held-out data and must
   not be used for training when reporting this benchmark. We sampled from **Mega-ASR-Train**,
   rather than the standard Mega-ASR test set, because in our experiments the standard test set
   was not acoustically challenging enough to clearly discriminate among robust ASR systems. This

@@ -1,9 +1,19 @@
 TARGET_WORDS = 32_928
 
 MEGA = {
-    "id": "AirCaps/mega-asr-noise-a5sv2",
-    "revision": "5b07e1bc50a199c96b58c64197b5ccabb79a910c",
+    "id": "zhifeixie/Voices-in-the-Wild-2M",
+    "revision": "a8a35d3319737190d6fd3d39157b258eaab35980",
+    "seed": 20260823,
+    "shuffle_buffer": 512,
+    "examples_per_condition": 250,
     "conditions": ["noise", "far_field", "far_field_noise", "recording_noise", "obstructed_noise"],
+    "shards": {
+        "noise": (131, [3, 17, 31, 47, 63, 79, 101, 127]),
+        "far_field": (57, [0, 7, 14, 21, 28, 35, 42, 56]),
+        "far_field_noise": (131, [3, 17, 31, 47, 63, 79, 101, 127]),
+        "recording_noise": (3, [0, 1, 2]),
+        "obstructed_noise": (3, [0, 1, 2]),
+    },
 }
 
 AMI = {
