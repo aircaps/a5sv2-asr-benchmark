@@ -13,21 +13,6 @@ trial-1 corpus WERs; pooled WER is also reported. No multi-trial averaging is us
 | [DiPCo](https://arxiv.org/abs/1909.13447) | [5 eval meetings + 1 dev meeting](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset/blob/main/results/four-corpus-v1/references/meetings.jsonl.gz) | `U01.CH1`, +5.1 dB | 33,681 |
 | [NOTSOFAR](https://www.isca-archive.org/interspeech_2024/vinnikov24_interspeech.html) | [22 eval-small meetings](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset/blob/main/results/four-corpus-v1/references/meetings.jsonl.gz) | `sc_meetup_0/ch0.wav`, 0 dB | 33,496 |
 
-### Mega-ASR disclosure
-
-We sampled from **Mega-ASR-Train**, rather than the standard Mega-ASR test set, because in our
-experiments the standard test set was not acoustically challenging enough to clearly discriminate
-among robust ASR systems. This is a derived evaluation set; it should not be mixed into training
-when reporting results on it.
-
-A5Sv2 was not trained or fine-tuned on these 1,250 selected recordings or transcripts, and they
-were not used for checkpoint selection, hyperparameter tuning, prompt tuning, or any other
-model-selection decision. We cannot determine whether third-party systems were trained on these
-items or overlapping upstream data. This is an exact-item disclosure, not a claim of
-distribution-level independence: the subset comes from a public training split and may resemble
-data used to develop any evaluated system. Mega-ASR results should therefore be interpreted as a
-developer-created robustness diagnostic alongside the three meeting corpora.
-
 The exact IDs, revisions, selection rules, reference parsing, audio handling, and API requests are
 specified in [`PROTOCOL.md`](PROTOCOL.md).
 
@@ -90,3 +75,18 @@ provider module for a paid smoke test.
 ## License
 
 Apache-2.0. Provider APIs and source corpora remain subject to their own terms and licenses.
+
+## Mega-ASR disclosure
+
+We sampled from **Mega-ASR-Train**, rather than the standard Mega-ASR test set, because in our
+experiments the standard test set was not acoustically challenging enough to clearly discriminate
+among robust ASR systems. This is a derived evaluation set; it should not be mixed into training
+when reporting results on it.
+
+A5Sv2 was not trained or fine-tuned on these 1,250 selected recordings or transcripts, and they
+were not used for checkpoint selection, hyperparameter tuning, prompt tuning, or any other
+model-selection decision. We cannot determine whether third-party systems were trained on these
+items or overlapping upstream data. This is an exact-item disclosure, not a claim of
+distribution-level independence: the subset comes from a public training split and may resemble
+data used to develop any evaluated system. Mega-ASR results should therefore be interpreted as a
+developer-created robustness diagnostic alongside the three meeting corpora.

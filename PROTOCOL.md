@@ -11,17 +11,7 @@ Selections were frozen from references and metadata only; no model output was us
   ([paper](https://arxiv.org/abs/2605.19833)). The fixed selection contains 250 English
   utterances from each of `far_field`, `far_field_noise`, `noise`, `obstructed_noise`, and
   `recording_noise`. Selection seed `20260823`, shuffle buffer `512`, source-shard IDs, source-row
-  identities, and audio hashes are retained in the code and release artifacts. It is not
-  speaker-disjoint held-out data and must
-  not be used for training when reporting this benchmark. We sampled from **Mega-ASR-Train**,
-  rather than the standard Mega-ASR test set, because in our experiments the standard test set
-  was not acoustically challenging enough to clearly discriminate among robust ASR systems. This
-  is a derived evaluation set; it should not be mixed into training when reporting results on it.
-  A5Sv2 was not trained or fine-tuned on the 1,250 selected recordings or transcripts, and they
-  were not used for checkpoint selection, hyperparameter tuning, prompt tuning, or any other
-  model-selection decision. Equivalent information is unavailable for third-party systems. This
-  exact-item statement does not establish distribution-level independence from the public source
-  corpus or its data-generation process.
+  identities, and audio hashes are retained in the code and release artifacts.
 - **AMI:** `ES2004d ES2014a IS1009a IS1009b TS3003b TS3003c TS3007b` from the official
   scenario-only unseen-evaluation pool. Among subsets covering all five meeting series and all
   four scenario phases, this is the lexicographically first smallest subset minimizing distance
@@ -115,3 +105,17 @@ no multi-trial averaging. The primary four-corpus aggregate is the arithmetic me
 trial-1 corpus WERs; pooled WER is total trial-1 errors divided by total reference words.
 
 Release v1 reports point estimates only; confidence intervals are not reported.
+
+## Mega-ASR disclosure
+
+Mega-ASR is not speaker-disjoint held-out data and must not be used for training when reporting
+this benchmark. We sampled from **Mega-ASR-Train**, rather than the standard Mega-ASR test set,
+because in our experiments the standard test set was not acoustically challenging enough to
+clearly discriminate among robust ASR systems. This is a derived evaluation set; it should not be
+mixed into training when reporting results on it.
+
+A5Sv2 was not trained or fine-tuned on the 1,250 selected recordings or transcripts, and they were
+not used for checkpoint selection, hyperparameter tuning, prompt tuning, or any other
+model-selection decision. Equivalent information is unavailable for third-party systems. This
+exact-item statement does not establish distribution-level independence from the public source
+corpus or its data-generation process.
