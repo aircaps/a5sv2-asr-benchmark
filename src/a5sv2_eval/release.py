@@ -254,6 +254,12 @@ def main() -> None:
             "normalization": "Unicode NFKC; lowercase; remove apostrophes; replace other punctuation with spaces; collapse whitespace",
         },
         "uncertainty": {"reported": False},
+        "mega_asr_disclosure": {
+            "selection": "Sampled from Mega-ASR-Train because the standard test set was not acoustically challenging enough to discriminate robust ASR systems",
+            "a5sv2_exact_items_used_for_training_or_model_selection": False,
+            "third_party_exact_item_or_distribution_overlap": "unknown",
+            "distribution_level_independence_claimed": False,
+        },
         "input_artifacts": inputs,
     }
     (args.output / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
