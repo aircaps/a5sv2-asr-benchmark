@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="900" viewBox="0 0 1800 900" role="img" aria-labelledby="title desc">
+<title id="title">A5Sv2 ASR Benchmark — WER by Corpus</title><desc id="desc">Grouped bars compare WER on Mega-ASR, AMI, DiPCo, and NOTSOFAR for six streaming ASR systems.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="60" y="65" font-family="Georgia,serif" font-size="38" fill="#151515">A5Sv2 ASR Benchmark — WER by Corpus</text>
+<text x="60" y="103" font-family="Arial,sans-serif" font-size="20" fill="#666666">% of words transcribed incorrectly · lower is better · continuous full-meeting streaming</text>
+<line x1="70" x2="1765" y1="715.0" y2="715.0" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="722.0" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">0</text>
+<line x1="70" x2="1765" y1="589.1" y2="589.1" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="596.1" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">20</text>
+<line x1="70" x2="1765" y1="463.2" y2="463.2" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="470.2" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">40</text>
+<line x1="70" x2="1765" y1="337.4" y2="337.4" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="344.4" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">60</text>
+<line x1="70" x2="1765" y1="211.5" y2="211.5" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="218.5" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">80</text>
+<rect x="850" y="125" width="19" height="19" rx="3" fill="#2d6cdf"/>
+<text x="878" y="141" font-family="Arial,sans-serif" font-size="18" fill="#333">Mega-ASR</text>
+<rect x="1060" y="125" width="19" height="19" rx="3" fill="#16827a"/>
+<text x="1088" y="141" font-family="Arial,sans-serif" font-size="18" fill="#333">AMI</text>
+<rect x="1270" y="125" width="19" height="19" rx="3" fill="#d95f02"/>
+<text x="1298" y="141" font-family="Arial,sans-serif" font-size="18" fill="#333">DiPCo</text>
+<rect x="1480" y="125" width="19" height="19" rx="3" fill="#6f4c9b"/>
+<text x="1508" y="141" font-family="Arial,sans-serif" font-size="18" fill="#333">NOTSOFAR</text>
+<rect x="104.8" y="572.5" width="48" height="142.5" rx="5" fill="#2d6cdf"/>
+<text x="128.8" y="565.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">22.6</text>
+<rect x="159.8" y="586.5" width="48" height="128.5" rx="5" fill="#16827a"/>
+<text x="183.8" y="579.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">20.4</text>
+<rect x="214.8" y="498.5" width="48" height="216.5" rx="5" fill="#d95f02"/>
+<text x="238.8" y="491.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">34.4</text>
+<rect x="269.8" y="527.1" width="48" height="187.9" rx="5" fill="#6f4c9b"/>
+<text x="293.8" y="520.1" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">29.9</text>
+<text x="211.2" y="775" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">ElevenLabs Scribe v2</text>
+<text x="211.2" y="798" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Realtime</text>
+<rect x="387.2" y="591.1" width="48" height="123.9" rx="5" fill="#2d6cdf"/>
+<text x="411.2" y="584.1" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">19.7</text>
+<rect x="442.2" y="569.0" width="48" height="146.0" rx="5" fill="#16827a"/>
+<text x="466.2" y="562.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">23.2</text>
+<rect x="497.2" y="480.5" width="48" height="234.5" rx="5" fill="#d95f02"/>
+<text x="521.2" y="473.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">37.3</text>
+<rect x="552.2" y="488.8" width="48" height="226.2" rx="5" fill="#6f4c9b"/>
+<text x="576.2" y="481.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">35.9</text>
+<text x="493.8" y="775" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">A5Sv2</text>
+<rect x="669.8" y="593.8" width="48" height="121.2" rx="5" fill="#2d6cdf"/>
+<text x="693.8" y="586.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">19.3</text>
+<rect x="724.8" y="527.2" width="48" height="187.8" rx="5" fill="#16827a"/>
+<text x="748.8" y="520.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">29.8</text>
+<rect x="779.8" y="474.6" width="48" height="240.4" rx="5" fill="#d95f02"/>
+<text x="803.8" y="467.6" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">38.2</text>
+<rect x="834.8" y="485.4" width="48" height="229.6" rx="5" fill="#6f4c9b"/>
+<text x="858.8" y="478.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">36.5</text>
+<text x="776.2" y="775" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">AssemblyAI Universal-3.5</text>
+<text x="776.2" y="798" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Pro Realtime</text>
+<rect x="952.2" y="539.9" width="48" height="175.1" rx="5" fill="#2d6cdf"/>
+<text x="976.2" y="532.9" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">27.8</text>
+<rect x="1007.2" y="525.2" width="48" height="189.8" rx="5" fill="#16827a"/>
+<text x="1031.2" y="518.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">30.2</text>
+<rect x="1062.2" y="460.4" width="48" height="254.6" rx="5" fill="#d95f02"/>
+<text x="1086.2" y="453.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">40.5</text>
+<rect x="1117.2" y="457.4" width="48" height="257.6" rx="5" fill="#6f4c9b"/>
+<text x="1141.2" y="450.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">40.9</text>
+<text x="1058.8" y="775" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">OpenAI GPT Live</text>
+<text x="1058.8" y="798" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Transcribe</text>
+<rect x="1234.8" y="460.4" width="48" height="254.6" rx="5" fill="#2d6cdf"/>
+<text x="1258.8" y="453.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">40.5</text>
+<rect x="1289.8" y="488.8" width="48" height="226.2" rx="5" fill="#16827a"/>
+<text x="1313.8" y="481.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">35.9</text>
+<rect x="1344.8" y="279.9" width="48" height="435.1" rx="5" fill="#d95f02"/>
+<text x="1368.8" y="272.9" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">69.1</text>
+<rect x="1399.8" y="472.4" width="48" height="242.6" rx="5" fill="#6f4c9b"/>
+<text x="1423.8" y="465.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">38.6</text>
+<text x="1341.2" y="775" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Deepgram Nova-3</text>
+<text x="1341.2" y="798" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Streaming</text>
+<rect x="1517.2" y="496.7" width="48" height="218.3" rx="5" fill="#2d6cdf"/>
+<text x="1541.2" y="489.7" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">34.7</text>
+<rect x="1572.2" y="501.4" width="48" height="213.6" rx="5" fill="#16827a"/>
+<text x="1596.2" y="494.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">33.9</text>
+<rect x="1627.2" y="214.8" width="48" height="500.2" rx="5" fill="#d95f02"/>
+<text x="1651.2" y="207.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">79.5</text>
+<rect x="1682.2" y="432.8" width="48" height="282.2" rx="5" fill="#6f4c9b"/>
+<text x="1706.2" y="425.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#222">44.8</text>
+<text x="1623.8" y="775" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Google Chirp 3</text>
+<text x="1623.8" y="798" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#222">Streaming</text></svg>

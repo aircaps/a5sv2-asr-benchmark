@@ -1,0 +1,37 @@
+system_id,system,trial,condition,samples,reference_words,errors,wer_pct
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,overall,1250,32928,7456,22.643343
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,far_field,250,5608,279,4.975036
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,far_field_noise,250,9675,3118,32.227390
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,noise,250,7135,1957,27.428171
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,obstructed_noise,250,5462,1585,29.018674
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,recording_noise,250,5048,517,10.241680
+a5sv2,A5Sv2,1,overall,1250,32928,6481,19.682337
+a5sv2,A5Sv2,1,far_field,250,5608,300,5.349501
+a5sv2,A5Sv2,1,far_field_noise,250,9675,3004,31.049096
+a5sv2,A5Sv2,1,noise,250,7135,1453,20.364401
+a5sv2,A5Sv2,1,obstructed_noise,250,5462,1272,23.288173
+a5sv2,A5Sv2,1,recording_noise,250,5048,452,8.954041
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,overall,1250,32928,6340,19.254130
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,far_field,250,5608,260,4.636234
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,far_field_noise,250,9675,3260,33.695090
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,noise,250,7135,1475,20.672740
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,obstructed_noise,250,5462,1057,19.351886
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,recording_noise,250,5048,288,5.705230
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,overall,1250,32928,9158,27.812196
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,far_field,250,5608,302,5.385164
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,far_field_noise,250,9675,4169,43.090439
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,noise,250,7135,2438,34.169587
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,obstructed_noise,250,5462,1624,29.732699
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,recording_noise,250,5048,625,12.381141
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,overall,1250,32928,13322,40.457969
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,far_field,250,5608,421,7.507133
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,far_field_noise,250,9675,6373,65.870801
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,noise,250,7135,3178,44.540995
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,obstructed_noise,250,5462,2397,43.885024
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,recording_noise,250,5048,953,18.878764
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,overall,1250,32928,11418,34.675656
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,far_field,250,5608,440,7.845934
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,far_field_noise,250,9675,5194,53.684755
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,noise,250,7135,2757,38.640505
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,obstructed_noise,250,5462,2202,40.314903
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,recording_noise,250,5048,825,16.343106

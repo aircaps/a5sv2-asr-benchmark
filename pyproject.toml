@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a5sv2-eval"
+version = "1.0.0"
+description = "Reproducible streaming ASR evaluation on four public English corpora"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "Apache-2.0"
+dependencies = ["jiwer==4.0.0"]
+
+[project.optional-dependencies]
+api = [
+  "datasets==2.21.0",
+  "google-api-core==2.29.0",
+  "google-auth==2.52.0",
+  "google-cloud-speech==2.36.0",
+  "googleapis-common-protos==1.72.0",
+  "grpcio==1.80.0",
+  "grpcio-status==1.80.0",
+  "numpy==2.2.6",
+  "proto-plus==1.27.0",
+  "protobuf==6.33.5",
+  "pyarrow==25.0.1",
+  "scipy==1.17.0",
+  "websockets==15.0.1",
+]
+dev = [
+  "pytest==8.4.1",
+  "pytest-asyncio==1.1.0",
+  "ruff==0.12.10",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

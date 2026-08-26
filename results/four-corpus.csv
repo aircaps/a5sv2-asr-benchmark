@@ -1,0 +1,7 @@
+system_id,system,trial,mega_asr_wer_pct,ami_wer_pct,dipco_wer_pct,notsofar_wer_pct,macro_wer_pct,pooled_wer_pct,reference_words,coverage
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,22.643343,20.411200,34.396247,29.854311,26.826275,26.882052,133033,1285/1285
+a5sv2,A5Sv2,1,19.682337,23.202138,37.261364,35.932649,29.019622,29.095788,133033,1285/1285
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,19.254130,29.831754,38.187702,36.475997,30.937396,31.002082,133033,1285/1285
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,27.812196,30.159742,40.456043,40.924289,34.838068,34.895853,133033,1285/1285
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,40.457969,35.945092,69.127995,38.550872,46.020482,46.119384,133033,1285/1285
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,34.675656,33.928571,79.466168,44.829233,48.224907,48.387242,133033,1285/1285

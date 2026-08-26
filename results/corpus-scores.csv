@@ -1,0 +1,25 @@
+system_id,system,trial,corpus,samples,hits,substitutions,deletions,insertions,reference_words,errors,wer_pct
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,Mega-ASR,1250,26270,4882,1776,798,32928,7456,22.643343
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,AMI,7,27516,2588,2824,1309,32928,6721,20.411200
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,DiPCo,6,23939,4688,5054,1843,33681,11585,34.396247
+elevenlabs_scribe_v2_realtime,ElevenLabs Scribe v2 Realtime,1,NOTSOFAR,22,24254,2760,6482,758,33496,10000,29.854311
+a5sv2,A5Sv2,1,Mega-ASR,1250,26871,4107,1950,424,32928,6481,19.682337
+a5sv2,A5Sv2,1,AMI,7,25705,2219,5004,417,32928,7640,23.202138
+a5sv2,A5Sv2,1,DiPCo,6,21994,4317,7370,863,33681,12550,37.261364
+a5sv2,A5Sv2,1,NOTSOFAR,22,21766,2439,9291,306,33496,12036,35.932649
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,Mega-ASR,1250,26958,2640,3330,370,32928,6340,19.254130
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,AMI,7,23506,2086,7336,401,32928,9823,29.831754
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,DiPCo,6,21657,3194,8830,838,33681,12862,38.187702
+assemblyai_universal_3_5_pro_realtime,AssemblyAI Universal-3.5 Pro Realtime,1,NOTSOFAR,22,21584,1955,9957,306,33496,12218,36.475997
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,Mega-ASR,1250,24008,4217,4703,238,32928,9158,27.812196
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,AMI,7,23344,1758,7826,347,32928,9931,30.159742
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,DiPCo,6,20524,2759,10398,469,33681,13626,40.456043
+openai_gpt_live_transcribe,OpenAI GPT Live Transcribe,1,NOTSOFAR,22,19960,1767,11769,172,33496,13708,40.924289
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,Mega-ASR,1250,19925,2617,10386,319,32928,13322,40.457969
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,AMI,7,21336,2538,9054,244,32928,11836,35.945092
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,DiPCo,6,10760,2177,20744,362,33681,23283,69.127995
+deepgram_nova_3_streaming,Deepgram Nova-3 Streaming,1,NOTSOFAR,22,20900,2996,9600,317,33496,12913,38.550872
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,Mega-ASR,1250,22722,3448,6758,1212,32928,11418,34.675656
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,AMI,7,22388,2029,8511,632,32928,11172,33.928571
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,DiPCo,6,7132,1286,25263,216,33681,26765,79.466168
+google_chirp_3_streaming,Google Chirp 3 Streaming,1,NOTSOFAR,22,18828,2303,12365,348,33496,15016,44.829233
