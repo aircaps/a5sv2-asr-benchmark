@@ -6,4 +6,4 @@
 
 All values come from saved transcript trial 1 for every system and corpus. No CSV contains a
 multi-trial mean. Scores use `src/a5sv2_eval/score.py`; regenerate the SVGs with
-`python tools/render_charts.py`. Confidence intervals are planned but are not part of release v1.
+`python tools/render_charts.py`. Confidence intervals are not reported.

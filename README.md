@@ -38,13 +38,10 @@ reference items succeeded for every listed system.
 Machine-readable scores are in [`results/`](results). Raw references, predictions, run metadata,
 and SHA-256 checksums are published in the
 [`AirCaps/a5sv2-asr-benchmark-dataset`](https://huggingface.co/datasets/AirCaps/a5sv2-asr-benchmark-dataset)
-Hugging Face dataset; see
-[`docs/HUGGING_FACE.md`](docs/HUGGING_FACE.md). A5Sv2 inference code is not published, but its raw
-predictions are provided so every score can be reproduced independently.
+Hugging Face dataset. A5Sv2 inference code is not published, but its raw predictions are provided
+so every score can be reproduced independently.
 
-Confidence intervals are not part of this release. A future release will use paired cluster
-bootstrap resampling: utterances for Mega-ASR and whole meetings for AMI, DiPCo, and NOTSOFAR,
-with identical resamples across systems.
+This release reports point estimates only; confidence intervals are not reported.
 
 ## Quickstart
 

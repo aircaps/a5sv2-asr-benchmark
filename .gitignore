@@ -10,6 +10,5 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 benchmark_data/
-hf_upload/
 *.local.json
 .DS_Store

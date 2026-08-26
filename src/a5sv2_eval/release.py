@@ -253,10 +253,7 @@ def main() -> None:
             "pooled": "total errors divided by total reference words",
             "normalization": "Unicode NFKC; lowercase; remove apostrophes; replace other punctuation with spaces; collapse whitespace",
         },
-        "uncertainty": {
-            "reported": False,
-            "planned": "paired cluster bootstrap; utterances for Mega-ASR and meetings for meeting corpora",
-        },
+        "uncertainty": {"reported": False},
         "input_artifacts": inputs,
     }
     (args.output / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")

@@ -42,7 +42,7 @@ padding, denoising, beamforming, silence removal, or prompting.
 - AMI uses the conventional single distant-microphone channel `Array1-01`, unchanged.
 - DiPCo uses `U01.CH1`, the nearest array device on average. A fixed +5.1 dB gain is applied and
   preparation aborts if any sample clips.
-- NOTSOFAR uses the internally processed single-channel conference device
+- NOTSOFAR uses the source dataset's single-channel conference device
   `sc_meetup_0/ch0.wav`, unchanged. No close-talk audio is used.
 
 DiPCo's `[noise]`, `[laugh]`, and `[unintelligible]` markers and NOTSOFAR XML tags are excluded
@@ -103,8 +103,4 @@ average of utterance WERs. Release v1 reports saved trial 1 for every system and
 no multi-trial averaging. The primary four-corpus aggregate is the arithmetic mean of the four
 trial-1 corpus WERs; pooled WER is total trial-1 errors divided by total reference words.
 
-Confidence intervals are not reported in release v1. The planned uncertainty analysis is a
-paired cluster bootstrap using the same resamples for every system: utterances are the Mega-ASR
-clusters and whole meetings are the AMI, DiPCo, and NOTSOFAR clusters. Aggregate intervals will
-recompute corpus, macro, and pooled WER within each paired resample rather than treating words as
-independent observations.
+Release v1 reports point estimates only; confidence intervals are not reported.
