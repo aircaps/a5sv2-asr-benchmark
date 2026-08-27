@@ -25,7 +25,7 @@ reference items succeeded for every listed system.
 | System | Mega-ASR | AMI | DiPCo | NOTSOFAR | Macro | Pooled |
 |---|---:|---:|---:|---:|---:|---:|
 | ElevenLabs Scribe v2 Realtime | 22.643343 | **20.411200** | **34.396247** | **29.854311** | **26.826275** | **26.882052** |
-| A5Sv2 | 19.682337 | 23.202138 | 37.261364 | 35.932649 | 29.019622 | 29.095788 |
+| A5Sv2 | **19.682337** | **23.202138** | **37.261364** | **35.932649** | **29.019622** | **29.095788** |
 | AssemblyAI Universal-3.5 Pro Realtime | **19.254130** | 29.831754 | 38.187702 | 36.475997 | 30.937396 | 31.002082 |
 | OpenAI GPT Live Transcribe | 27.812196 | 30.159742 | 40.456043 | 40.924289 | 34.838068 | 34.895853 |
 | Deepgram Nova-3 Streaming | 40.457969 | 35.945092 | 69.127995 | 38.550872 | 46.020482 | 46.119384 |
@@ -42,6 +42,34 @@ Hugging Face dataset. A5Sv2 inference code is not published, but its raw predict
 so every score can be reproduced independently.
 
 This release reports point estimates only; confidence intervals are not reported.
+
+## Open-source comparison
+
+This separate headline table compares A5Sv2 with four open-weight systems: NVIDIA Nemotron 3 ASR
+Streaming, Mistral Voxtral Mini Transcribe Realtime, Kyutai STT 2.6B, and Whisper Large V3 with
+the published UFAL streaming conversion. Every row has complete 1,285/1,285 saved trial-1
+coverage. The pinned inference methods, model revisions, and run commands are in
+[`docs/OPEN_SOURCE_MODELS.md`](docs/OPEN_SOURCE_MODELS.md).
+
+<!-- OPEN_SOURCE_TABLE_START -->
+| System | Mega-ASR | AMI | DiPCo | NOTSOFAR | Macro | Pooled |
+|---|---:|---:|---:|---:|---:|---:|
+| A5Sv2 | 19.682337 | 23.202138 | 37.261364 | 35.932649 | 29.019622 | 29.095788 |
+| NVIDIA Nemotron 3 ASR Streaming 0.6B | 24.489796 | 33.318149 | 61.969656 | 46.781705 | 41.639827 | 41.776852 |
+| Whisper Large V3 (UFAL Whisper-Streaming) | 28.058188 | 55.864310 | 76.221015 | 42.154287 | 50.574450 | 50.683665 |
+| Mistral Voxtral Mini Transcribe Realtime 2602 | 32.546769 | 48.712342 | 76.307117 | 45.136733 | 50.675740 | 50.797171 |
+| Kyutai STT 2.6B English | 33.175413 | 38.535593 | 70.906446 | 63.491163 | 51.527154 | 51.687927 |
+<!-- OPEN_SOURCE_TABLE_END -->
+
+![Open-source pooled WER across the four corpora](docs/open-source-wer-pooled.svg)
+
+![Open-source WER by corpus and system](docs/open-source-wer-by-corpus.svg)
+
+Machine-readable open-source scores are in
+[`results/open-source-four-corpus.csv`](results/open-source-four-corpus.csv), with exact edit counts
+in [`results/open-source-corpus-scores.csv`](results/open-source-corpus-scores.csv). Raw predictions,
+references, run metadata, validation evidence, and checksums are staged in the companion dataset's
+`results/open-source-four-corpus-v1/` bundle.
 
 ## Quickstart
 

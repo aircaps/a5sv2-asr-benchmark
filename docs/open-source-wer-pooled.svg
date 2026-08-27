@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+<title id="title">A5Sv2 vs Open-Source ASR — Pooled WER</title><desc id="desc">Pooled WER ranked from lowest to highest for 5 streaming ASR systems.</desc>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="60" y="65" font-family="Georgia,serif" font-size="38" fill="#151515">A5Sv2 vs Open-Source ASR — Pooled WER</text>
+<text x="60" y="103" font-family="Arial,sans-serif" font-size="20" fill="#666666">% of words transcribed incorrectly · lower is better · 133,033 reference words</text>
+<line x1="70" x2="1540" y1="595.0" y2="595.0" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="602.0" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">0</text>
+<line x1="70" x2="1540" y1="532.9" y2="532.9" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="539.9" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">10</text>
+<line x1="70" x2="1540" y1="470.7" y2="470.7" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="477.7" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">20</text>
+<line x1="70" x2="1540" y1="408.6" y2="408.6" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="415.6" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">30</text>
+<line x1="70" x2="1540" y1="346.4" y2="346.4" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="353.4" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">40</text>
+<line x1="70" x2="1540" y1="284.3" y2="284.3" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="291.3" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">50</text>
+<line x1="70" x2="1540" y1="222.1" y2="222.1" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="229.1" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">60</text>
+<line x1="70" x2="1540" y1="160.0" y2="160.0" stroke="#d0d0d0" stroke-dasharray="4 8"/>
+<text x="55" y="167.0" text-anchor="end" font-family="Arial,sans-serif" font-size="17" fill="#777">70</text>
+<rect x="148.0" y="414.2" width="138.0" height="180.8" rx="8" fill="#1b9e77"/>
+<text x="217.0" y="402.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">29.1%</text>
+<text x="217.0" y="645" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">A5Sv2</text>
+<rect x="442.0" y="335.4" width="138.0" height="259.6" rx="8" fill="#2d6cdf"/>
+<text x="511.0" y="323.4" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">41.8%</text>
+<text x="511.0" y="645" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">NVIDIA Nemotron 3</text>
+<text x="511.0" y="669" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">ASR Streaming 0.6B</text>
+<rect x="736.0" y="280.0" width="138.0" height="315.0" rx="8" fill="#7a4ea3"/>
+<text x="805.0" y="268.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">50.7%</text>
+<text x="805.0" y="645" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">Whisper Large V3</text>
+<text x="805.0" y="669" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">UFAL Streaming</text>
+<rect x="1030.0" y="279.3" width="138.0" height="315.7" rx="8" fill="#e66101"/>
+<text x="1099.0" y="267.3" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">50.8%</text>
+<text x="1099.0" y="645" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">Mistral Voxtral Mini</text>
+<text x="1099.0" y="669" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">Transcribe Realtime 2602</text>
+<rect x="1324.0" y="273.8" width="138.0" height="321.2" rx="8" fill="#1f4e79"/>
+<text x="1393.0" y="261.8" text-anchor="middle" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#111">51.7%</text>
+<text x="1393.0" y="645" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">Kyutai STT 2.6B</text>
+<text x="1393.0" y="669" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#222">English</text></svg>

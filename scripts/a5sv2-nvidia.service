@@ -1,0 +1,16 @@
+[Unit]
+Description=A5Sv2 NVIDIA Nemotron API benchmark
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/a5sv2
+Environment=RUN_BUCKET=a5sv2-benchmark-207423186775-us-east-2
+Environment=RUN_PREFIX=runs/20260826-open-source-api-v1
+ExecStart=/bin/bash /opt/a5sv2/scripts/ec2_open_source_api_worker.sh nvidia
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

@@ -131,10 +131,23 @@ async def run_benchmark(
     trial: int = 1,
     trials: int = 1,
     close_provider: bool = True,
+    shard_count: int = 1,
+    shard_index: int = 0,
+    pre_sharded: bool = False,
 ) -> int:
+    maximum_concurrency = getattr(provider, "max_concurrency", None)
+    if maximum_concurrency and concurrency > maximum_concurrency:
+        raise ValueError(
+            f"{provider.system} supports at most {maximum_concurrency} stream(s) per process; "
+            "use deterministic GPU shards for parallel local inference"
+        )
     manifest = read_jsonl(manifest_path)
     if limit is not None:
         manifest = manifest[:limit]
+    if shard_count < 1 or not 0 <= shard_index < shard_count:
+        raise ValueError("Require shard_count >= 1 and 0 <= shard_index < shard_count")
+    if not pre_sharded:
+        manifest = [row for index, row in enumerate(manifest) if index % shard_count == shard_index]
     if not manifest or len({row_key(row) for row in manifest}) != len(manifest):
         raise RuntimeError("Manifest is empty or contains duplicate utterance keys")
     maximum = getattr(provider, "max_audio_seconds", None)
@@ -214,6 +227,8 @@ async def run_benchmark(
                                     "starts_per_minute": starts_per_minute,
                                     "retries": retries,
                                     "trials": trials,
+                                    "shard_count": shard_count,
+                                    "shard_index": shard_index,
                                 },
                                 "provider_metadata": response,
                                 "completed_at": datetime.now(timezone.utc).isoformat(),
@@ -281,6 +296,9 @@ async def run_trials(provider_factory, args) -> int:
                 trial,
                 args.trials,
                 close_provider=False,
+                shard_count=getattr(args, "shard_count", 1),
+                shard_index=getattr(args, "shard_index", 0),
+                pre_sharded=getattr(args, "pre_sharded", False),
             )
     finally:
         if hasattr(provider, "close"):
@@ -301,4 +319,11 @@ def parser(description: str, output_name: str, concurrency: int, starts: int = 0
     result.add_argument("--retries", type=int, default=2)
     result.add_argument("--limit", type=int)
     result.add_argument("--trials", type=int, default=5)
+    result.add_argument("--shard-count", type=int, default=1)
+    result.add_argument("--shard-index", type=int, default=0)
+    result.add_argument(
+        "--pre-sharded",
+        action="store_true",
+        help="Manifest is already a complete shard; retain shard metadata without modulo filtering",
+    )
     return result

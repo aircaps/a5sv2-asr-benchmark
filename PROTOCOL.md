@@ -91,6 +91,12 @@ Provider references: [Deepgram](https://developers.deepgram.com/reference/speech
 
 ## Scoring
 
+The five open-weight additions use the same fixed data, audio, reference, retry, success, and
+scoring rules. Their model-specific streaming conversions, exact upstream revisions, pacing rules,
+and GPU execution protocol are frozen in [`docs/OPEN_SOURCE_MODELS.md`](docs/OPEN_SOURCE_MODELS.md).
+They are reported in a separate table containing no proprietary comparison systems.
+
+
 Reference and hypothesis receive the same transform:
 
 1. Unicode NFKC and lowercase.

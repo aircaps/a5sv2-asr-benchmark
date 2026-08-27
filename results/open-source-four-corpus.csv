@@ -1,0 +1,6 @@
+system_id,system,trial,mega_asr_wer_pct,ami_wer_pct,dipco_wer_pct,notsofar_wer_pct,macro_wer_pct,pooled_wer_pct,reference_words,coverage
+a5sv2,A5Sv2,1,19.682337,23.202138,37.261364,35.932649,29.019622,29.095788,133033,1285/1285
+nvidia_nemotron_3_asr_streaming_0_6b,NVIDIA Nemotron 3 ASR Streaming 0.6B,1,24.489796,33.318149,61.969656,46.781705,41.639827,41.776852,133033,1285/1285
+whisper_large_v3_ufal_streaming,Whisper Large V3 (UFAL Whisper-Streaming),1,28.058188,55.864310,76.221015,42.154287,50.574450,50.683665,133033,1285/1285
+mistral_voxtral_mini_transcribe_realtime_2602,Mistral Voxtral Mini Transcribe Realtime 2602,1,32.546769,48.712342,76.307117,45.136733,50.675740,50.797171,133033,1285/1285
+kyutai_stt_2_6b_en,Kyutai STT 2.6B English,1,33.175413,38.535593,70.906446,63.491163,51.527154,51.687927,133033,1285/1285

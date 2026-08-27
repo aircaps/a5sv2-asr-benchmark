@@ -25,7 +25,18 @@ api = [
   "protobuf==6.33.5",
   "pyarrow==25.0.1",
   "scipy==1.17.0",
+  "mistralai[realtime]==2.9.4",
+  "together[realtime]==2.31.0",
   "websockets==15.0.1",
+]
+kyutai = [
+  "julius==0.2.7",
+  "moshi==0.2.11",
+]
+whisper = [
+  "faster-whisper==1.2.1",
+  "librosa==0.11.0",
+  "soundfile==0.13.1",
 ]
 dev = [
   "pytest==8.4.1",

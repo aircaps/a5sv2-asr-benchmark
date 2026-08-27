@@ -24,13 +24,34 @@ PROVIDERS = {
         "ELEVENLABS_API_KEY",
         "elevenlabs_scribe_v2_realtime.jsonl",
     ),
+    "nvidia": (
+        "a5sv2_eval.providers.nvidia",
+        "TOGETHER_API_KEY",
+        "nvidia_nemotron_3_asr_streaming_0_6b.jsonl",
+    ),
+    "mistral": (
+        "a5sv2_eval.providers.mistral",
+        "MISTRAL_API_KEY",
+        "mistral_voxtral_mini_transcribe_realtime_2602.jsonl",
+    ),
+    "kyutai": ("a5sv2_eval.providers.kyutai", None, "kyutai_stt_2_6b_en.jsonl"),
+    "whisper": (
+        "a5sv2_eval.providers.whisper_streaming",
+        None,
+        "whisper_large_v3_ufal_streaming.jsonl",
+    ),
 }
+DEFAULT_PROVIDERS = ["deepgram", "assemblyai", "google", "openai", "elevenlabs"]
 
 
 async def run(
     names: list[str], trials: int, manifest: Path, output_dir: Path, concurrency: int | None
 ) -> int:
-    missing = [PROVIDERS[name][1] for name in names if not os.getenv(PROVIDERS[name][1])]
+    missing = [
+        PROVIDERS[name][1]
+        for name in names
+        if PROVIDERS[name][1] and not os.getenv(PROVIDERS[name][1])
+    ]
     if missing:
         raise RuntimeError(f"Missing environment variables: {', '.join(missing)}")
     processes = []
@@ -63,7 +84,7 @@ async def run(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run streaming ASR providers in parallel")
-    parser.add_argument("providers", nargs="*", choices=PROVIDERS, default=list(PROVIDERS))
+    parser.add_argument("providers", nargs="*", choices=PROVIDERS, default=DEFAULT_PROVIDERS)
     parser.add_argument("--trials", type=int, default=1)
     parser.add_argument("--concurrency", type=int)
     parser.add_argument("--manifest", type=Path, default=Path("benchmark_data/mega/manifest.jsonl"))

@@ -11,7 +11,7 @@ from pathlib import Path
 
 from a5sv2_eval.score import corpus_counts, load_rows, row_identity
 
-SYSTEMS = {
+BASE_SYSTEMS = {
     "a5sv2": "A5Sv2",
     "assemblyai_universal_3_5_pro_realtime": "AssemblyAI Universal-3.5 Pro Realtime",
     "deepgram_nova_3_streaming": "Deepgram Nova-3 Streaming",
@@ -19,7 +19,16 @@ SYSTEMS = {
     "google_chirp_3_streaming": "Google Chirp 3 Streaming",
     "openai_gpt_live_transcribe": "OpenAI GPT Live Transcribe",
 }
-API_SYSTEMS = set(SYSTEMS) - {"a5sv2"}
+OPEN_SOURCE_SYSTEMS = {
+    "nvidia_nemotron_3_asr_streaming_0_6b": "NVIDIA Nemotron 3 ASR Streaming 0.6B",
+    "mistral_voxtral_mini_transcribe_realtime_2602": (
+        "Mistral Voxtral Mini Transcribe Realtime 2602"
+    ),
+    "kyutai_stt_2_6b_en": "Kyutai STT 2.6B English",
+    "whisper_large_v3_ufal_streaming": "Whisper Large V3 (UFAL Whisper-Streaming)",
+}
+SYSTEMS = {**BASE_SYSTEMS, **OPEN_SOURCE_SYSTEMS}
+API_SYSTEMS = set(BASE_SYSTEMS) - {"a5sv2"}
 CORPORA = ["Mega-ASR", "AMI", "DiPCo", "NOTSOFAR"]
 REFERENCE_KEYS = [
     "dataset_id",
@@ -111,6 +120,10 @@ def validate_result(path: Path, manifest: list[dict], system_id: str) -> list[di
     rows = load_rows(path)
     if len(rows) != len(manifest) or any(row.get("status", "ok") != "ok" for row in rows):
         raise RuntimeError(f"Expected {len(manifest)} successful rows in {path}")
+    if any(int(row.get("trial", 1)) != 1 for row in rows):
+        raise RuntimeError(f"Only saved trial 1 can be released: {path}")
+    if system_id != "a5sv2" and any(row.get("system_id") != system_id for row in rows):
+        raise RuntimeError(f"Mixed or incorrect system_id for {system_id}: {path}")
     if len({row_identity(row) for row in rows}) != len(rows):
         raise RuntimeError(f"Duplicate rows in {path}")
     expected = sorted(row_identity(row) for row in manifest)
@@ -119,18 +132,18 @@ def validate_result(path: Path, manifest: list[dict], system_id: str) -> list[di
     return [public_prediction(row, system_id) for row in rows]
 
 
-def api_inputs(paths: list[Path], label: str) -> dict[str, Path]:
+def result_inputs(paths: list[Path], label: str, expected: set[str]) -> dict[str, Path]:
     output = {}
     for path in paths:
         rows = load_rows(path)
-        if not rows or rows[0].get("system_id") not in API_SYSTEMS:
+        if not rows or rows[0].get("system_id") not in expected:
             raise RuntimeError(f"Unapproved or empty {label} result: {path}")
         system_id = rows[0]["system_id"]
         if system_id in output:
             raise RuntimeError(f"Duplicate {label} result for {system_id}")
         output[system_id] = path
-    if set(output) != API_SYSTEMS:
-        raise RuntimeError(f"{label} results must contain exactly: {sorted(API_SYSTEMS)}")
+    if set(output) != expected:
+        raise RuntimeError(f"{label} results must contain exactly: {sorted(expected)}")
     return output
 
 
@@ -164,7 +177,10 @@ def write_csv(path: Path, rows: list[dict], fields: list[str]) -> None:
         writer.writeheader()
         for row in rows:
             writer.writerow(
-                {key: f"{value:.6f}" if isinstance(value, float) else value for key, value in row.items()}
+                {
+                    key: f"{value:.6f}" if isinstance(value, float) else value
+                    for key, value in row.items()
+                }
             )
 
 
@@ -176,6 +192,8 @@ def main() -> None:
     parser.add_argument("--meetings-manifest", type=Path, required=True)
     parser.add_argument("--mega-results", type=Path, nargs="+", required=True)
     parser.add_argument("--meeting-results", type=Path, nargs="+", required=True)
+    parser.add_argument("--open-source-mega-results", type=Path, nargs="*", default=[])
+    parser.add_argument("--open-source-meeting-results", type=Path, nargs="*", default=[])
     parser.add_argument("--a5sv2-mega", type=Path, required=True)
     parser.add_argument("--a5sv2-meetings", type=Path, required=True)
     args = parser.parse_args()
@@ -186,14 +204,31 @@ def main() -> None:
     meeting_manifest = load_rows(args.meetings_manifest)
     if len(mega_manifest) != 1250 or len(meeting_manifest) != 35:
         raise RuntimeError("Expected 1,250 Mega-ASR rows and 35 meeting rows")
-    write_gzip(args.output / "references/mega-asr.jsonl.gz", [public_reference(r) for r in mega_manifest])
-    write_gzip(args.output / "references/meetings.jsonl.gz", [public_reference(r) for r in meeting_manifest])
+    write_gzip(
+        args.output / "references/mega-asr.jsonl.gz", [public_reference(r) for r in mega_manifest]
+    )
+    write_gzip(
+        args.output / "references/meetings.jsonl.gz",
+        [public_reference(r) for r in meeting_manifest],
+    )
 
-    mega_inputs = api_inputs(args.mega_results, "Mega-ASR")
-    meeting_inputs = api_inputs(args.meeting_results, "meeting")
+    mega_inputs = result_inputs(args.mega_results, "Mega-ASR", API_SYSTEMS)
+    meeting_inputs = result_inputs(args.meeting_results, "meeting", API_SYSTEMS)
+    if bool(args.open_source_mega_results) != bool(args.open_source_meeting_results):
+        raise RuntimeError("Open-source Mega-ASR and meeting results must be supplied together")
+    included_systems = dict(BASE_SYSTEMS)
+    if args.open_source_mega_results:
+        expected_open = set(OPEN_SOURCE_SYSTEMS)
+        mega_inputs.update(
+            result_inputs(args.open_source_mega_results, "open-source Mega-ASR", expected_open)
+        )
+        meeting_inputs.update(
+            result_inputs(args.open_source_meeting_results, "open-source meeting", expected_open)
+        )
+        included_systems.update(OPEN_SOURCE_SYSTEMS)
     inputs = []
     scores = []
-    for system_id in SYSTEMS:
+    for system_id in included_systems:
         mega_path = args.a5sv2_mega if system_id == "a5sv2" else mega_inputs[system_id]
         meeting_path = args.a5sv2_meetings if system_id == "a5sv2" else meeting_inputs[system_id]
         mega_rows = validate_result(mega_path, mega_manifest, system_id)
@@ -204,16 +239,30 @@ def main() -> None:
         inputs.extend(
             [
                 {"system_id": system_id, "corpus_group": "mega-asr", "sha256": sha256(mega_path)},
-                {"system_id": system_id, "corpus_group": "meetings", "sha256": sha256(meeting_path)},
+                {
+                    "system_id": system_id,
+                    "corpus_group": "meetings",
+                    "sha256": sha256(meeting_path),
+                },
             ]
         )
 
     score_fields = [
-        "system_id", "system", "trial", "corpus", "samples", "hits", "substitutions", "deletions",
-        "insertions", "reference_words", "errors", "wer_pct",
+        "system_id",
+        "system",
+        "trial",
+        "corpus",
+        "samples",
+        "hits",
+        "substitutions",
+        "deletions",
+        "insertions",
+        "reference_words",
+        "errors",
+        "wer_pct",
     ]
     summary = []
-    for system_id, system in SYSTEMS.items():
+    for system_id, system in included_systems.items():
         rows = [row for row in scores if row["system_id"] == system_id]
         values = {row["corpus"]: row["wer_pct"] for row in rows}
         summary.append(
@@ -226,7 +275,9 @@ def main() -> None:
                 "dipco_wer_pct": values["DiPCo"],
                 "notsofar_wer_pct": values["NOTSOFAR"],
                 "macro_wer_pct": sum(values.values()) / 4,
-                "pooled_wer_pct": 100 * sum(row["errors"] for row in rows) / sum(row["reference_words"] for row in rows),
+                "pooled_wer_pct": 100
+                * sum(row["errors"] for row in rows)
+                / sum(row["reference_words"] for row in rows),
                 "reference_words": sum(row["reference_words"] for row in rows),
                 "coverage": f"{sum(row['samples'] for row in rows)}/1285",
             }
@@ -237,6 +288,14 @@ def main() -> None:
     write_csv(args.output / "scores/corpus-scores.csv", scores, score_fields)
     summary_fields = list(summary[0])
     write_csv(args.output / "scores/four-corpus.csv", summary, summary_fields)
+    if args.open_source_mega_results:
+        open_source_ids = {"a5sv2", *OPEN_SOURCE_SYSTEMS}
+        open_source_summary = [row for row in summary if row["system_id"] in open_source_ids]
+        write_csv(
+            args.output / "scores/open-source-four-corpus.csv",
+            open_source_summary,
+            summary_fields,
+        )
 
     metadata = {
         "schema_version": "1.0",
@@ -245,7 +304,7 @@ def main() -> None:
         "reference_rows": 1285,
         "reference_words": 133033,
         "trials_per_system": 1,
-        "systems": list(SYSTEMS),
+        "systems": list(included_systems),
         "scoring": {
             "metric": "corpus WER",
             "trial_aggregation": "none; release v1 reports trial 1",
@@ -265,10 +324,15 @@ def main() -> None:
         },
         "input_artifacts": inputs,
     }
-    (args.output / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    (args.output / "metadata.json").write_text(
+        json.dumps(metadata, indent=2) + "\n", encoding="utf-8"
+    )
 
     table = ["| System | Macro WER | Pooled WER |", "|---|---:|---:|"]
-    table += [f"| {row['system']} | {row['macro_wer_pct']:.6f} | {row['pooled_wer_pct']:.6f} |" for row in summary]
+    table += [
+        f"| {row['system']} | {row['macro_wer_pct']:.6f} | {row['pooled_wer_pct']:.6f} |"
+        for row in summary
+    ]
     (args.output / "README.md").write_text(
         "# A5Sv2 four-corpus benchmark results\n\n"
         "WER (%), lower is better. Every value is from saved trial 1; no multi-trial averaging is used. References and raw predictions are included for independent rescoring.\n\n"
