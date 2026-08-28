@@ -1,0 +1,73 @@
+{
+  "dataset_repository": "AirCaps/a5sv2-asr-benchmark-dataset",
+  "files": [
+    {
+      "bytes": 5846,
+      "sha256": "5947a5bc7dd0f80f1cedd435ae6a5ca9d8bb52483b30631c2c779e16bc16403d",
+      "source": "README.md",
+      "target": "results/coval-latency-v1/README.md"
+    },
+    {
+      "bytes": 5020,
+      "sha256": "c0c78a26e7ae75821f176ccf51c8deb48bd356ed4fbb7163a2a269db19f3b03c",
+      "source": "PROTOCOL.md",
+      "target": "results/coval-latency-v1/PROTOCOL.md"
+    },
+    {
+      "bytes": 1023,
+      "sha256": "8d5744ceb7826d24dfee3178be65286407d6615a4d971abaef8dbceb7a246d9b",
+      "source": "DATA_LICENSES.md",
+      "target": "results/coval-latency-v1/DATA_LICENSES.md"
+    },
+    {
+      "bytes": 2964,
+      "sha256": "d1077f87a0527d4be9fe6d70af5992dd280909b8905200dbd5d269fdc7e2618b",
+      "source": "methodology.json",
+      "target": "results/coval-latency-v1/methodology.json"
+    },
+    {
+      "bytes": 1740,
+      "sha256": "3e267f75b2c59f0b1a9dc0b3b4384e5ae63a62f7afc2a9bce5acd851f68333e6",
+      "source": "result.schema.json",
+      "target": "results/coval-latency-v1/result.schema.json"
+    },
+    {
+      "bytes": 443789,
+      "sha256": "439ef68e1fef427e346981dbec82a3da4183aeb560309e82f79bd5f5a886d333",
+      "source": "plans/coval-full-947.json",
+      "target": "results/coval-latency-v1/plans/coval-full-947.json"
+    },
+    {
+      "bytes": 179328,
+      "sha256": "e01ead1fcc3bf54968ef76ff4dd51065f7bcc22546fc1805bddd38d7546bab90",
+      "source": "results/macbook-air-m4-coreml-cpu-ane/raw-results.jsonl.gz",
+      "target": "results/coval-latency-v1/results/macbook-air-m4-coreml-cpu-ane/raw-results.jsonl.gz"
+    },
+    {
+      "bytes": 7706,
+      "sha256": "716a06a9fde0c4b7e97ac2ce78398ef89dca373b78e8c6215dc3cbd0ed93d20b",
+      "source": "results/macbook-air-m4-coreml-cpu-ane/latency-summary.json",
+      "target": "results/coval-latency-v1/results/macbook-air-m4-coreml-cpu-ane/latency-summary.json"
+    },
+    {
+      "bytes": 1847,
+      "sha256": "d9e5b542c8d0bc3d9f2f7005c2d11c461fb7c549da94bf0b3dd375d94d22e763",
+      "source": "results/macbook-air-m4-coreml-cpu-ane/wer-summary.json",
+      "target": "results/coval-latency-v1/results/macbook-air-m4-coreml-cpu-ane/wer-summary.json"
+    },
+    {
+      "bytes": 2621,
+      "sha256": "9c1955212fdf4c2a740f640c288c1cc4d741ee3516a168c02e3abc3bcb00c32d",
+      "source": "results/macbook-air-m4-coreml-cpu-ane/run-metadata.json",
+      "target": "results/coval-latency-v1/results/macbook-air-m4-coreml-cpu-ane/run-metadata.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "9d8b6bab420e247fd27cc0cc0731ca873bd25f38bd7366c8f341a4f70f68c8e9",
+      "source": "results/macbook-air-m4-coreml-cpu-ane/SHA256SUMS",
+      "target": "results/coval-latency-v1/results/macbook-air-m4-coreml-cpu-ane/SHA256SUMS"
+    }
+  ],
+  "schema_version": "1.0",
+  "target_prefix": "results/coval-latency-v1"
+}

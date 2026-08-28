@@ -1,0 +1,60 @@
+{
+  "artifact_attestations": {
+    "model_bundle_sha256": "6997ccc33997a6aa79bee5631dcf80bbadfdca49baad3da19ac9740b053fcf4c",
+    "runner_sha256": "998e65392cbe419280b7aaa3a6fa49889e456e1983b543476daa25930548097d"
+  },
+  "compute_policy": "Apple Core ML with CPU and Neural Engine eligible. Core ML controls actual operation placement.",
+  "concurrency": 1,
+  "controls": {
+    "failed_rows": 0,
+    "outlier_removal": "none",
+    "power": "AC power; battery reported 100% at preflight and completion",
+    "thermal_telemetry": "not recorded continuously",
+    "warmup": "one untimed warmup per execution session"
+  },
+  "coverage": "947/947",
+  "environment": {
+    "chip": "Apple M4",
+    "computer": "MacBook Air (13-inch, M4, 2025)",
+    "cpu_cores": 10,
+    "cpu_efficiency_cores": 6,
+    "cpu_performance_cores": 4,
+    "gpu_cores": 8,
+    "hardware_model": "Mac16,12",
+    "internal_storage": "256 GB Apple SSD (APPLE SSD AP0256Z)",
+    "machine": "arm64",
+    "memory_bytes": "17179869184",
+    "model_identifier": "Mac16,12",
+    "neural_engine_cores": 16,
+    "os_build": "25B78",
+    "part_number": "MW123LL/A",
+    "platform": "macOS-26.1-arm64-arm-64bit",
+    "power_state": "AC Power; battery 100%; charged",
+    "python": "3.12.10",
+    "unified_memory_gb": 16,
+    "year_introduced": 2025
+  },
+  "execution_sessions": [
+    {
+      "ended_at_utc": "2026-08-28T15:01:28.535737+00:00",
+      "execution_session_id": "eabbe050-cd57-495f-a980-16d966a7868f",
+      "started_at_utc": "2026-08-28T14:59:46.188075+00:00",
+      "successful_rows": 12
+    },
+    {
+      "ended_at_utc": "2026-08-28T17:14:28.836294+00:00",
+      "execution_session_id": "61932e7b-7a8e-4675-978b-0a436c7580ed",
+      "started_at_utc": "2026-08-28T15:03:35.326702+00:00",
+      "successful_rows": 935
+    }
+  ],
+  "inference_disclosure": "Model weights and inference implementation are private and are not included. Raw predictions, primitive timings, artifact attestations, and scoring code are public.",
+  "interruption_disclosure": "The logical trial was stopped at the user's request after 12 successful items and resumed with the same plan, hardware, model bundle, runner, compute policy, and output. Completed items were not rerun; every row retains its execution-session identifier.",
+  "logical_trials": 1,
+  "plan_sha256": "439ef68e1fef427e346981dbec82a3da4183aeb560309e82f79bd5f5a886d333",
+  "raw_results_sha256": "e01ead1fcc3bf54968ef76ff4dd51065f7bcc22546fc1805bddd38d7546bab90",
+  "result_id": "macbook-air-m4-coreml-cpu-ane-trial-1",
+  "schema_version": "1.0",
+  "system": "A5Sv2",
+  "variant": "a5sv2-coreml-cpu-ane"
+}

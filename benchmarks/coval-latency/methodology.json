@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "method_id": "coval-stt-oracle@52d72516b5158c693d57eef43bd9044a7cd0a28d",
+  "coval_repository": "https://github.com/coval-ai/benchmarks",
+  "coval_commit": "52d72516b5158c693d57eef43bd9044a7cd0a28d",
+  "audio": {
+    "sample_rate_hz": 16000,
+    "channels": 1,
+    "sample_width_bytes": 2,
+    "stream_chunk_ms": 100,
+    "pacing": "absolute deadline from first-audio time; final partial chunk included",
+    "untimed_preparation": "download, hash verification, WAV parsing, oracle trimming, PCM conversion, model loading, and warmup"
+  },
+  "endpoint": {
+    "source": "speech_end_offset_ms from pinned Coval manifests",
+    "precomputation": "last Silero VAD speech segment; minimum silence 300 ms; speech padding 100 ms",
+    "fixed_post_speech_silence_ms": 0
+  },
+  "metrics": {
+    "time_to_first_token_seconds": "first non-empty transcript emission minus first-audio time",
+    "audio_to_final_seconds": "final transcript completion minus first-audio time",
+    "time_to_final_segment_seconds": "max(0, audio_to_final_seconds - speech_end_offset_ms / 1000)"
+  },
+  "execution": {
+    "logical_trials": 1,
+    "execution_sessions": 2,
+    "concurrency": 1,
+    "outlier_removal": "none",
+    "failed_rows": 0,
+    "compute_policy": "Core ML; CPU and Neural Engine eligible",
+    "hardware": {
+      "computer": "MacBook Air (13-inch, M4, 2025)",
+      "model_identifier": "Mac16,12",
+      "part_number": "MW123LL/A",
+      "chip": "Apple M4",
+      "cpu": "10 cores: 4 performance and 6 efficiency",
+      "gpu_cores": 8,
+      "neural_engine_cores": 16,
+      "unified_memory_gb": 16,
+      "internal_storage": "256 GB Apple SSD (APPLE SSD AP0256Z)",
+      "operating_system": "macOS 26.1 build 25B78 arm64"
+    }
+  },
+  "analysis": {
+    "primary_groups": ["stt-v1", "stt-v3"],
+    "secondary_group": "all_item_weighted",
+    "statistics": ["mean", "p50", "p95"],
+    "confidence_interval": "95% percentile bootstrap over items, conditional on one logical trial",
+    "bootstrap_iterations": 10000,
+    "bootstrap_seed": 20260827
+  },
+  "datasets": {
+    "stt-v1": {
+      "version": "1.0.0",
+      "items": 50,
+      "manifest_sha256": "8c35e1d080e5482bb64eb8b9f39fd870ca334f9f5ca6d188680750715b6605e3"
+    },
+    "stt-v3": {
+      "version": "1.0.0",
+      "items": 897,
+      "manifest_sha256": "286de7c17410237c026662dfb41d42e94eeb835258d0dd2c4ffaab04a55d898b"
+    }
+  },
+  "plan": {
+    "path": "plans/coval-full-947.json",
+    "sha256": "439ef68e1fef427e346981dbec82a3da4183aeb560309e82f79bd5f5a886d333",
+    "items": 947,
+    "oracle_audio_seconds": 7901.943
+  },
+  "scoring": {
+    "coval": {
+      "normalization_version": "2",
+      "whisper_normalizer": "0.1.12",
+      "jiwer": "4.0.0",
+      "headline": "arithmetic mean of per-item WER percentages"
+    },
+    "a5sv2_repository_standard": {
+      "jiwer": "4.0.0",
+      "headline": "corpus edit counts with pooled and unweighted dataset-macro WER"
+    }
+  }
+}

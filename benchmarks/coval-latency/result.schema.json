@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aircaps.example/schemas/coval-device-stt-result-v1.1.json",
+  "title": "A5Sv2 Coval-compatible device latency result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "method_id", "run_id", "execution_session_id", "trial", "variant",
+    "dataset_id", "dataset_version", "sample_id", "audio_path", "audio_sha256",
+    "reference", "hypothesis", "speech_end_offset_ms", "effective_audio_seconds",
+    "time_to_first_token_seconds", "audio_to_final_seconds", "time_to_final_segment_seconds",
+    "started_at_utc", "status", "error"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.1"},
+    "method_id": {"const": "coval-stt-oracle@52d72516b5158c693d57eef43bd9044a7cd0a28d"},
+    "run_id": {"type": "string"},
+    "execution_session_id": {"type": "string"},
+    "trial": {"const": 1},
+    "variant": {"const": "a5sv2-coreml-cpu-ane"},
+    "dataset_id": {"enum": ["stt-v1", "stt-v3"]},
+    "dataset_version": {"const": "1.0.0"},
+    "sample_id": {"type": "string"},
+    "audio_path": {"type": "string"},
+    "audio_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "reference": {"type": "string"},
+    "hypothesis": {"type": "string"},
+    "speech_end_offset_ms": {"type": "number", "minimum": 0},
+    "effective_audio_seconds": {"type": "number", "minimum": 0},
+    "time_to_first_token_seconds": {"type": "number", "minimum": 0},
+    "audio_to_final_seconds": {"type": "number", "minimum": 0},
+    "time_to_final_segment_seconds": {"type": "number", "minimum": 0},
+    "started_at_utc": {"type": "string", "format": "date-time"},
+    "status": {"const": "ok"},
+    "error": {"type": "null"}
+  }
+}
