@@ -22,24 +22,48 @@
     "time_to_final_segment_seconds": "max(0, audio_to_final_seconds - speech_end_offset_ms / 1000)"
   },
   "execution": {
-    "logical_trials": 1,
-    "execution_sessions": 2,
     "concurrency": 1,
     "outlier_removal": "none",
-    "failed_rows": 0,
     "compute_policy": "Core ML; CPU and Neural Engine eligible",
-    "hardware": {
-      "computer": "MacBook Air (13-inch, M4, 2025)",
-      "model_identifier": "Mac16,12",
-      "part_number": "MW123LL/A",
-      "chip": "Apple M4",
-      "cpu": "10 cores: 4 performance and 6 efficiency",
-      "gpu_cores": 8,
-      "neural_engine_cores": 16,
-      "unified_memory_gb": 16,
-      "internal_storage": "256 GB Apple SSD (APPLE SSD AP0256Z)",
-      "operating_system": "macOS 26.1 build 25B78 arm64"
-    }
+    "published_results": [
+      {
+        "result_id": "macbook-air-m4-coreml-cpu-ane-trial-1",
+        "logical_trials": 1,
+        "execution_sessions": 2,
+        "failed_rows": 0,
+        "hardware": {
+          "computer": "MacBook Air (13-inch, M4, 2025)",
+          "model_identifier": "Mac16,12",
+          "part_number": "MW123LL/A",
+          "chip": "Apple M4",
+          "cpu": "10 cores: 4 performance and 6 efficiency",
+          "gpu_cores": 8,
+          "neural_engine_cores": 16,
+          "unified_memory_gb": 16,
+          "internal_storage": "256 GB Apple SSD (APPLE SSD AP0256Z)",
+          "operating_system": "macOS 26.1 build 25B78 arm64"
+        }
+      },
+      {
+        "result_id": "iphone-16-coreml-cpu-ane-trial-1",
+        "logical_trials": 1,
+        "execution_sessions": 1,
+        "failed_rows": 0,
+        "hardware": {
+          "computer": "iPhone 16 (6.1-inch, 2024)",
+          "model_identifier": "iPhone17,3",
+          "hardware_model": "D47AP",
+          "chip": "Apple A18",
+          "cpu": "6 cores: 2 performance and 4 efficiency",
+          "gpu_cores": 5,
+          "neural_engine_cores": 16,
+          "memory": "not captured by the run harness",
+          "internal_storage": "128 GB",
+          "operating_system": "iOS 26.6.1 beta build 23G83 arm64e"
+        },
+        "power_deviation": "Wired and charging/full rather than unplugged"
+      }
+    ]
   },
   "analysis": {
     "primary_groups": ["stt-v1", "stt-v3"],

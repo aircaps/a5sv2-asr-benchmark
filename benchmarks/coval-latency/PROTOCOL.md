@@ -58,24 +58,44 @@ display conversions to milliseconds happen only in documentation.
 
 ## Execution controls
 
+Common controls:
+
+- Compute policy: Core ML, CPU and Neural Engine eligible; actual placement is controlled by Core
+  ML and was not introspected per operation.
+- Concurrency: one.
+- Trial: one complete ordered pass per published device result.
+- Warmup: one per process launch.
+- Outlier removal: none.
+
+Recorded Mac environment:
+
 - Device: MacBook Air (13-inch, M4, 2025), model identifier `Mac16,12`, part number
   `MW123LL/A`.
 - Chip: Apple M4 with a 10-core CPU (4 performance and 6 efficiency cores), 8-core GPU, and
   16-core Neural Engine.
 - Memory and storage: 16 GB unified memory and 256 GB Apple SSD (`APPLE SSD AP0256Z`).
 - OS: macOS 26.1 build `25B78`, arm64.
-- Compute policy: Core ML, CPU and Neural Engine eligible; actual placement is controlled by Core
-  ML and was not introspected per operation.
-- Concurrency: one.
 - Power: AC, battery 100% at checked boundaries.
 - Thermal telemetry: not recorded continuously.
-- Trial: one complete ordered pass.
-- Warmup: one per process launch.
 
-The trial was deliberately stopped after row 12 and resumed. Completed identities were read from
-the append-only result file and skipped; none was rerun. This yields one logical trial and two
-execution sessions, both retained in the release. A complete uninterrupted replication remains
-desirable.
+The Mac trial was deliberately stopped after row 12 and resumed. Completed identities were read
+from the append-only result file and skipped; none was rerun. This yields one logical trial and two
+execution sessions, both retained in the release.
+
+Recorded iPhone environment:
+
+- Device: physical iPhone 16 (6.1-inch, 2024), model identifier `iPhone17,3`, hardware model
+  `D47AP`, 128 GB storage. Physical memory was not captured by the run harness.
+- Chip: Apple A18 with a 6-core CPU (2 performance and 4 efficiency cores), 5-core GPU, and
+  16-core Neural Engine.
+- OS: iOS 26.6.1 beta build `23G83`, arm64e.
+- Power: wired and charging at 100% initially; wired and full at completion. This differs from the
+  preregistered unplugged-phone control.
+- Thermal state: nominal before and after; Low Power Mode disabled before and after.
+
+The iPhone trial completed all 947 items in one uninterrupted execution session. A replication
+under the preregistered unplugged control remains required before treating it as the final
+power-controlled phone result.
 
 ## Aggregation and uncertainty
 

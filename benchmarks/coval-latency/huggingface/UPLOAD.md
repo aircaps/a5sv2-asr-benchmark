@@ -4,7 +4,7 @@ Target dataset: `AirCaps/a5sv2-asr-benchmark-dataset`
 
 Target prefix: `results/coval-latency-v1/`
 
-`upload-manifest.json` lists every source path, destination path, byte size, and SHA-256. Review
+`upload-manifest.json` lists every Mac and iPhone source path, destination path, byte size, and SHA-256. Review
 `../DATA_LICENSES.md`, especially the unresolved `stt-v3` source-data license, before uploading.
 
 No upload has been performed. After review and authentication, upload the listed files with the

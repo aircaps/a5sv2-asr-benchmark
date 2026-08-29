@@ -2,14 +2,14 @@
   "dataset_repository": "AirCaps/a5sv2-asr-benchmark-dataset",
   "files": [
     {
-      "bytes": 5846,
-      "sha256": "5947a5bc7dd0f80f1cedd435ae6a5ca9d8bb52483b30631c2c779e16bc16403d",
+      "bytes": 8241,
+      "sha256": "b59a9ac409cc5fc955fc9214aaeb0695c2409d357906aa13304d43a6901e0fdf",
       "source": "README.md",
       "target": "results/coval-latency-v1/README.md"
     },
     {
-      "bytes": 5020,
-      "sha256": "c0c78a26e7ae75821f176ccf51c8deb48bd356ed4fbb7163a2a269db19f3b03c",
+      "bytes": 5876,
+      "sha256": "9fd3ff6ed99f4409c17f9e13bde7cf60be69783f4f679c161b2e7590c0d72a6d",
       "source": "PROTOCOL.md",
       "target": "results/coval-latency-v1/PROTOCOL.md"
     },
@@ -20,8 +20,8 @@
       "target": "results/coval-latency-v1/DATA_LICENSES.md"
     },
     {
-      "bytes": 2964,
-      "sha256": "d1077f87a0527d4be9fe6d70af5992dd280909b8905200dbd5d269fdc7e2618b",
+      "bytes": 3854,
+      "sha256": "dca812c9a5701980cee60c669af347862bf12a79da546c7c392757981b772f7a",
       "source": "methodology.json",
       "target": "results/coval-latency-v1/methodology.json"
     },
@@ -66,6 +66,36 @@
       "sha256": "9d8b6bab420e247fd27cc0cc0731ca873bd25f38bd7366c8f341a4f70f68c8e9",
       "source": "results/macbook-air-m4-coreml-cpu-ane/SHA256SUMS",
       "target": "results/coval-latency-v1/results/macbook-air-m4-coreml-cpu-ane/SHA256SUMS"
+    },
+    {
+      "bytes": 174586,
+      "sha256": "7a3459497d0659d0c4d64686e7ea1893cb5d72e81c8b07ce209c550680c28a4b",
+      "source": "results/iphone-16-coreml-cpu-ane/raw-results.jsonl.gz",
+      "target": "results/coval-latency-v1/results/iphone-16-coreml-cpu-ane/raw-results.jsonl.gz"
+    },
+    {
+      "bytes": 7708,
+      "sha256": "b6be50fef4c3983c070df75031fcb5c8115c5005b96d205c004151b8e0ef7ee4",
+      "source": "results/iphone-16-coreml-cpu-ane/latency-summary.json",
+      "target": "results/coval-latency-v1/results/iphone-16-coreml-cpu-ane/latency-summary.json"
+    },
+    {
+      "bytes": 1848,
+      "sha256": "269d1c33009699f744cfaf36eee6b1c04a57742715273114e8328dbd50e25b45",
+      "source": "results/iphone-16-coreml-cpu-ane/wer-summary.json",
+      "target": "results/coval-latency-v1/results/iphone-16-coreml-cpu-ane/wer-summary.json"
+    },
+    {
+      "bytes": 2338,
+      "sha256": "0532060bcd70b9aad8ef46802d34f32805ea4810665249507a43b434b56a9f52",
+      "source": "results/iphone-16-coreml-cpu-ane/run-metadata.json",
+      "target": "results/coval-latency-v1/results/iphone-16-coreml-cpu-ane/run-metadata.json"
+    },
+    {
+      "bytes": 341,
+      "sha256": "2e6c0dc71cdc9732959f53c22c3c95a247049a0243fe20f65cd352fa2aac323a",
+      "source": "results/iphone-16-coreml-cpu-ane/SHA256SUMS",
+      "target": "results/coval-latency-v1/results/iphone-16-coreml-cpu-ane/SHA256SUMS"
     }
   ],
   "schema_version": "1.0",

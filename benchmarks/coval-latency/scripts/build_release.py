@@ -14,8 +14,16 @@ from pathlib import Path
 from analysis import analyze
 from score import score
 
-LOGICAL_RUN_ID = "macbook-air-m4-coreml-cpu-ane-trial-1"
-PUBLIC_VARIANT = "a5sv2-coreml-cpu-ane"
+PROFILES = {
+    "macbook-air-m4-coreml-cpu-ane": {
+        "logical_run_id": "macbook-air-m4-coreml-cpu-ane-trial-1",
+        "public_variant": "a5sv2-coreml-cpu-ane",
+    },
+    "iphone-16-coreml-cpu-ane": {
+        "logical_run_id": "iphone-16-coreml-cpu-ane-trial-1",
+        "public_variant": "a5sv2-coreml-cpu-ane-ios",
+    },
+}
 PUBLIC_FIELDS = (
     "schema_version",
     "method_id",
@@ -88,7 +96,15 @@ def main() -> None:
     parser.add_argument("--plan", type=Path, required=True)
     parser.add_argument("--private-run-metadata", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--profile",
+        choices=tuple(PROFILES),
+        default="macbook-air-m4-coreml-cpu-ane",
+    )
     args = parser.parse_args()
+    profile = PROFILES[args.profile]
+    logical_run_id = str(profile["logical_run_id"])
+    public_variant = str(profile["public_variant"])
 
     source_rows = load_jsonl(args.input)
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
@@ -111,9 +127,9 @@ def main() -> None:
         public.update(
             {
                 "schema_version": "1.1",
-                "run_id": LOGICAL_RUN_ID,
+                "run_id": logical_run_id,
                 "execution_session_id": source["run_id"],
-                "variant": PUBLIC_VARIANT,
+                "variant": public_variant,
             }
         )
         public_rows.append(public)
@@ -129,22 +145,8 @@ def main() -> None:
     write_json(args.output / "wer-summary.json", score(public_rows))
 
     private = json.loads(args.private_run_metadata.read_text(encoding="utf-8"))
-    metadata = {
-        "schema_version": "1.0",
-        "result_id": LOGICAL_RUN_ID,
-        "system": "A5Sv2",
-        "variant": PUBLIC_VARIANT,
-        "coverage": "947/947",
-        "logical_trials": 1,
-        "concurrency": 1,
-        "inference_disclosure": (
-            "Model weights and inference implementation are private and are not included. "
-            "Raw predictions, primitive timings, artifact attestations, and scoring code are public."
-        ),
-        "compute_policy": (
-            "Apple Core ML with CPU and Neural Engine eligible. Core ML controls actual operation placement."
-        ),
-        "environment": {
+    if args.profile == "macbook-air-m4-coreml-cpu-ane":
+        environment = {
             **private["environment"],
             "power_state": "AC Power; battery 100%; charged",
             "computer": "MacBook Air (13-inch, M4, 2025)",
@@ -159,7 +161,74 @@ def main() -> None:
             "internal_storage": "256 GB Apple SSD (APPLE SSD AP0256Z)",
             "os_build": "25B78",
             "year_introduced": 2025,
-        },
+        }
+        controls = {
+            "power": "AC power; battery reported 100% at preflight and completion",
+            "thermal_telemetry": "not recorded continuously",
+            "warmup": "one untimed warmup per execution session",
+            "outlier_removal": "none",
+            "failed_rows": 0,
+        }
+        interruption_disclosure = (
+            "The logical trial was stopped at the user's request after 12 successful items and "
+            "resumed with the same plan, hardware, model bundle, runner, compute policy, and output. "
+            "Completed items were not rerun; every row retains its execution-session identifier."
+        )
+    else:
+        before = private["before"]
+        after = private["after"]
+        environment = {
+            "computer": "iPhone 16 (6.1-inch, 2024)",
+            "device_type": "physical iPhone",
+            "model_identifier": "iPhone17,3",
+            "hardware_model": "D47AP",
+            "chip": "Apple A18",
+            "cpu_cores": 6,
+            "cpu_performance_cores": 2,
+            "cpu_efficiency_cores": 4,
+            "gpu_cores": 5,
+            "neural_engine_cores": 16,
+            "memory": "not captured by the run harness",
+            "internal_storage": "128 GB",
+            "machine": "arm64e",
+            "operating_system": f"{before['system_name']} {before['system_version']}",
+            "os_build": "23G83",
+            "os_release_type": "Beta",
+            "year_introduced": 2024,
+        }
+        controls = {
+            "power": (
+                "Wired and charging at start; battery 100%. Wired and full at completion. "
+                "This differs from the preregistered unplugged-phone control."
+            ),
+            "battery_level_before": before["battery_level"],
+            "battery_level_after": after["battery_level"],
+            "low_power_mode_before": before["low_power_mode"],
+            "low_power_mode_after": after["low_power_mode"],
+            "thermal_state_before": before["thermal_state"],
+            "thermal_state_after": after["thermal_state"],
+            "warmup": "one untimed warmup before the uninterrupted trial",
+            "outlier_removal": "none",
+            "failed_rows": 0,
+        }
+        interruption_disclosure = "None. All 947 items completed in one uninterrupted execution session."
+
+    metadata = {
+        "schema_version": "1.0",
+        "result_id": logical_run_id,
+        "system": "A5Sv2",
+        "variant": public_variant,
+        "coverage": "947/947",
+        "logical_trials": 1,
+        "concurrency": 1,
+        "inference_disclosure": (
+            "Model weights and inference implementation are private and are not included. "
+            "Raw predictions, primitive timings, artifact attestations, and scoring code are public."
+        ),
+        "compute_policy": (
+            "Apple Core ML with CPU and Neural Engine eligible. Core ML controls actual operation placement."
+        ),
+        "environment": environment,
         "plan_sha256": sha256(args.plan),
         "raw_results_sha256": sha256(raw_path),
         "artifact_attestations": {
@@ -167,18 +236,8 @@ def main() -> None:
             "runner_sha256": private["private_artifacts"]["worker_sha256"],
         },
         "execution_sessions": session_metadata(public_rows),
-        "interruption_disclosure": (
-            "The logical trial was stopped at the user's request after 12 successful items and "
-            "resumed with the same plan, hardware, model bundle, runner, compute policy, and output. "
-            "Completed items were not rerun; every row retains its execution-session identifier."
-        ),
-        "controls": {
-            "power": "AC power; battery reported 100% at preflight and completion",
-            "thermal_telemetry": "not recorded continuously",
-            "warmup": "one untimed warmup per execution session",
-            "outlier_removal": "none",
-            "failed_rows": 0,
-        },
+        "interruption_disclosure": interruption_disclosure,
+        "controls": controls,
     }
     write_json(args.output / "run-metadata.json", metadata)
 

@@ -8,24 +8,36 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET_PREFIX = "results/coval-latency-v1"
-SOURCES = (
+COMMON_SOURCES = (
     "README.md",
     "PROTOCOL.md",
     "DATA_LICENSES.md",
     "methodology.json",
     "result.schema.json",
     "plans/coval-full-947.json",
-    "results/macbook-air-m4-coreml-cpu-ane/raw-results.jsonl.gz",
-    "results/macbook-air-m4-coreml-cpu-ane/latency-summary.json",
-    "results/macbook-air-m4-coreml-cpu-ane/wer-summary.json",
-    "results/macbook-air-m4-coreml-cpu-ane/run-metadata.json",
-    "results/macbook-air-m4-coreml-cpu-ane/SHA256SUMS",
+)
+RESULT_NAMES = (
+    "macbook-air-m4-coreml-cpu-ane",
+    "iphone-16-coreml-cpu-ane",
+)
+RESULT_FILES = (
+    "raw-results.jsonl.gz",
+    "latency-summary.json",
+    "wer-summary.json",
+    "run-metadata.json",
+    "SHA256SUMS",
 )
 
 
 def main() -> None:
     files = []
-    for relative in SOURCES:
+    sources = list(COMMON_SOURCES)
+    sources.extend(
+        f"results/{result_name}/{name}"
+        for result_name in RESULT_NAMES
+        for name in RESULT_FILES
+    )
+    for relative in sources:
         path = ROOT / relative
         files.append(
             {

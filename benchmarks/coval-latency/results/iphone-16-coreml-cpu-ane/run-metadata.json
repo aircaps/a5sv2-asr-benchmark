@@ -1,0 +1,57 @@
+{
+  "artifact_attestations": {
+    "model_bundle_sha256": "f0dbcc50fb841dcf1af33361a1df865cbc4963c880706e8eca0202f3fb749445",
+    "runner_sha256": "8d6f4322a1aa829a1195067d16b43afc655c5bcfc35b9e7753c4d098bf17013e"
+  },
+  "compute_policy": "Apple Core ML with CPU and Neural Engine eligible. Core ML controls actual operation placement.",
+  "concurrency": 1,
+  "controls": {
+    "battery_level_after": 1,
+    "battery_level_before": 1,
+    "failed_rows": 0,
+    "low_power_mode_after": false,
+    "low_power_mode_before": false,
+    "outlier_removal": "none",
+    "power": "Wired and charging at start; battery 100%. Wired and full at completion. This differs from the preregistered unplugged-phone control.",
+    "thermal_state_after": "nominal",
+    "thermal_state_before": "nominal",
+    "warmup": "one untimed warmup before the uninterrupted trial"
+  },
+  "coverage": "947/947",
+  "environment": {
+    "chip": "Apple A18",
+    "computer": "iPhone 16 (6.1-inch, 2024)",
+    "cpu_cores": 6,
+    "cpu_efficiency_cores": 4,
+    "cpu_performance_cores": 2,
+    "device_type": "physical iPhone",
+    "gpu_cores": 5,
+    "hardware_model": "D47AP",
+    "internal_storage": "128 GB",
+    "machine": "arm64e",
+    "memory": "not captured by the run harness",
+    "model_identifier": "iPhone17,3",
+    "neural_engine_cores": 16,
+    "operating_system": "iOS 26.6.1",
+    "os_build": "23G83",
+    "os_release_type": "Beta",
+    "year_introduced": 2024
+  },
+  "execution_sessions": [
+    {
+      "ended_at_utc": "2026-08-29T02:16:18.993990+00:00",
+      "execution_session_id": "dd8ccc4a-134a-41fc-a693-131fbf30e2d5",
+      "started_at_utc": "2026-08-29T00:03:38+00:00",
+      "successful_rows": 947
+    }
+  ],
+  "inference_disclosure": "Model weights and inference implementation are private and are not included. Raw predictions, primitive timings, artifact attestations, and scoring code are public.",
+  "interruption_disclosure": "None. All 947 items completed in one uninterrupted execution session.",
+  "logical_trials": 1,
+  "plan_sha256": "439ef68e1fef427e346981dbec82a3da4183aeb560309e82f79bd5f5a886d333",
+  "raw_results_sha256": "7a3459497d0659d0c4d64686e7ea1893cb5d72e81c8b07ce209c550680c28a4b",
+  "result_id": "iphone-16-coreml-cpu-ane-trial-1",
+  "schema_version": "1.0",
+  "system": "A5Sv2",
+  "variant": "a5sv2-coreml-cpu-ane-ios"
+}

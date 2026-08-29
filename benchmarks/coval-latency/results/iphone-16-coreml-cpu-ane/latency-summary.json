@@ -1,0 +1,266 @@
+{
+  "bootstrap": {
+    "confidence": 0.95,
+    "iterations": 10000,
+    "limitation": "Intervals quantify item-sampling uncertainty for this one logical device trial; they do not estimate run-to-run, thermal, or device-to-device variance.",
+    "method": "percentile bootstrap over items within each reported group",
+    "seed": 20260827
+  },
+  "by_dataset": {
+    "all_item_weighted": {
+      "failed_rows": 0,
+      "metrics": {
+        "audio_to_final_seconds": {
+          "max_seconds": 14.362008084,
+          "mean": {
+            "estimate_seconds": 8.394570048701162,
+            "item_bootstrap_95ci_seconds": [
+              8.15733428722516,
+              8.631015091950317
+            ]
+          },
+          "min_seconds": 1.908199916,
+          "observations": 947,
+          "p50": {
+            "estimate_seconds": 9.602088292,
+            "item_bootstrap_95ci_seconds": [
+              9.205967667,
+              9.91077925
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 13.488719158799997,
+            "item_bootstrap_95ci_seconds": [
+              13.186051374799996,
+              13.663754300099999
+            ]
+          }
+        },
+        "time_to_final_segment_seconds": {
+          "max_seconds": 0.07586554199999984,
+          "mean": {
+            "estimate_seconds": 0.05038525461457233,
+            "item_bootstrap_95ci_seconds": [
+              0.05012748939691131,
+              0.05065292157436642
+            ]
+          },
+          "min_seconds": 0.017550958000000172,
+          "observations": 947,
+          "p50": {
+            "estimate_seconds": 0.05001012499999957,
+            "item_bootstrap_95ci_seconds": [
+              0.049768416999999676,
+              0.050342042000000475
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 0.057226320700000194,
+            "item_bootstrap_95ci_seconds": [
+              0.056541601057501036,
+              0.05798947869999992
+            ]
+          }
+        },
+        "time_to_first_token_seconds": {
+          "max_seconds": 5.058999917,
+          "mean": {
+            "estimate_seconds": 1.6487696299757129,
+            "item_bootstrap_95ci_seconds": [
+              1.6141383868135428,
+              1.6849153212828407
+            ]
+          },
+          "min_seconds": 0.536282042,
+          "observations": 947,
+          "p50": {
+            "estimate_seconds": 1.656328667,
+            "item_bootstrap_95ci_seconds": [
+              1.655873042,
+              1.656827834
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 2.7539616536,
+            "item_bootstrap_95ci_seconds": [
+              2.2657420127,
+              2.7577365787
+            ]
+          }
+        }
+      },
+      "successful_rows": 947
+    },
+    "stt-v1": {
+      "failed_rows": 0,
+      "metrics": {
+        "audio_to_final_seconds": {
+          "max_seconds": 14.362008084,
+          "mean": {
+            "estimate_seconds": 7.72272235248,
+            "item_bootstrap_95ci_seconds": [
+              6.7135347295739995,
+              8.739648882099502
+            ]
+          },
+          "min_seconds": 2.052950542,
+          "observations": 50,
+          "p50": {
+            "estimate_seconds": 8.088562188000001,
+            "item_bootstrap_95ci_seconds": [
+              5.972711291,
+              9.170828291
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 13.085642233,
+            "item_bootstrap_95ci_seconds": [
+              12.181307834,
+              14.34609844605
+            ]
+          }
+        },
+        "time_to_final_segment_seconds": {
+          "max_seconds": 0.06335216699999968,
+          "mean": {
+            "estimate_seconds": 0.049662352479999866,
+            "item_bootstrap_95ci_seconds": [
+              0.04877577652149992,
+              0.05065299220999984
+            ]
+          },
+          "min_seconds": 0.043028999999998874,
+          "observations": 50,
+          "p50": {
+            "estimate_seconds": 0.04918039600000057,
+            "item_bootstrap_95ci_seconds": [
+              0.04820499999999939,
+              0.050191396
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 0.054355821499999825,
+            "item_bootstrap_95ci_seconds": [
+              0.05239574169999967,
+              0.06142956089999968
+            ]
+          }
+        },
+        "time_to_first_token_seconds": {
+          "max_seconds": 1.664338083,
+          "mean": {
+            "estimate_seconds": 1.07441927582,
+            "item_bootstrap_95ci_seconds": [
+              0.984123643446,
+              1.1607524928885
+            ]
+          },
+          "min_seconds": 0.548141208,
+          "observations": 50,
+          "p50": {
+            "estimate_seconds": 1.155441437,
+            "item_bootstrap_95ci_seconds": [
+              1.1536322920000002,
+              1.159313083
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 1.6599995439,
+            "item_bootstrap_95ci_seconds": [
+              1.16420967775,
+              1.6627933081500001
+            ]
+          }
+        }
+      },
+      "successful_rows": 50
+    },
+    "stt-v3": {
+      "failed_rows": 0,
+      "metrics": {
+        "audio_to_final_seconds": {
+          "max_seconds": 14.257400125,
+          "mean": {
+            "estimate_seconds": 8.432019753061315,
+            "item_bootstrap_95ci_seconds": [
+              8.181365564964409,
+              8.679240703084671
+            ]
+          },
+          "min_seconds": 1.908199916,
+          "observations": 897,
+          "p50": {
+            "estimate_seconds": 9.715073333,
+            "item_bootstrap_95ci_seconds": [
+              9.4313615,
+              10.008549
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 13.503247150599998,
+            "item_bootstrap_95ci_seconds": [
+              13.203887375,
+              13.668528
+            ]
+          }
+        },
+        "time_to_final_segment_seconds": {
+          "max_seconds": 0.07586554199999984,
+          "mean": {
+            "estimate_seconds": 0.05042555016276477,
+            "item_bootstrap_95ci_seconds": [
+              0.05015743622246374,
+              0.05069657210342811
+            ]
+          },
+          "min_seconds": 0.017550958000000172,
+          "observations": 897,
+          "p50": {
+            "estimate_seconds": 0.05005650000000017,
+            "item_bootstrap_95ci_seconds": [
+              0.049806584000000154,
+              0.05041741600000016
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 0.05725554980000033,
+            "item_bootstrap_95ci_seconds": [
+              0.05659425840000125,
+              0.05801866600000016
+            ]
+          }
+        },
+        "time_to_first_token_seconds": {
+          "max_seconds": 5.058999917,
+          "mean": {
+            "estimate_seconds": 1.6807846998840579,
+            "item_bootstrap_95ci_seconds": [
+              1.6444647110302117,
+              1.7169386378856186
+            ]
+          },
+          "min_seconds": 0.536282042,
+          "observations": 897,
+          "p50": {
+            "estimate_seconds": 1.656607416,
+            "item_bootstrap_95ci_seconds": [
+              1.656174625,
+              1.65713075
+            ]
+          },
+          "p95": {
+            "estimate_seconds": 2.7549217578,
+            "item_bootstrap_95ci_seconds": [
+              2.266491375,
+              2.7580607336
+            ]
+          }
+        }
+      },
+      "successful_rows": 897
+    }
+  },
+  "execution_sessions": 1,
+  "logical_trials": 1,
+  "schema_version": "1.0"
+}

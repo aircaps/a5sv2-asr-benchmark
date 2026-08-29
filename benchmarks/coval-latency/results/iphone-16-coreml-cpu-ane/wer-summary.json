@@ -1,0 +1,68 @@
+{
+  "a5sv2_repository_standard": {
+    "aggregation": "corpus edit counts; pooled and unweighted dataset macro reported",
+    "normalization": "Unicode NFKC; lowercase; remove apostrophes; replace other punctuation with spaces; collapse whitespace",
+    "results": {
+      "all_macro": {
+        "datasets": 2,
+        "wer_pct": 3.6508061883546192
+      },
+      "all_pooled": {
+        "deletions": 216,
+        "errors": 985,
+        "hits": 20608,
+        "insertions": 174,
+        "reference_words": 21419,
+        "rows": 947,
+        "substitutions": 595,
+        "wer_pct": 4.598720761940333
+      },
+      "stt-v1": {
+        "deletions": 1,
+        "errors": 27,
+        "hits": 1013,
+        "insertions": 2,
+        "reference_words": 1038,
+        "rows": 50,
+        "substitutions": 24,
+        "wer_pct": 2.601156069364162
+      },
+      "stt-v3": {
+        "deletions": 215,
+        "errors": 958,
+        "hits": 19595,
+        "insertions": 172,
+        "reference_words": 20381,
+        "rows": 897,
+        "substitutions": 571,
+        "wer_pct": 4.7004563073450765
+      }
+    }
+  },
+  "coval_compatible": {
+    "aggregation": "arithmetic mean of per-item WER percentages",
+    "normalization": "whisper-normalizer EnglishTextNormalizer",
+    "normalization_version": "2",
+    "results": {
+      "all_item_weighted": {
+        "macro_mean_item_wer_pct": 3.483155642117878,
+        "mean_item_wer_pct": 4.1125640454962555,
+        "p50_item_wer_pct": 0.0,
+        "rows": 947
+      },
+      "stt-v1": {
+        "mean_item_wer_pct": 2.7794369195684987,
+        "p50_item_wer_pct": 0.0,
+        "rows": 50
+      },
+      "stt-v3": {
+        "mean_item_wer_pct": 4.186874364667257,
+        "p50_item_wer_pct": 0.0,
+        "rows": 897
+      }
+    }
+  },
+  "failed_rows": 0,
+  "schema_version": "1.0",
+  "successful_rows": 947
+}
